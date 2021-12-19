@@ -1,7 +1,7 @@
 {
-  "name": "y",
+  "name": "dar",
   "version": "1.0.0",
-  "description": "",
+  "description": "Ligth & simple CQRS application framework",
   "main": "index.js",
   "scripts": {
     "test": "jest",
