@@ -1,4 +1,5 @@
-import { Middleware, Context, Command } from './interfaces';
+import { Action } from '.';
+import { Middleware, Context } from './interfaces';
 
 export function composeMiddlewares(middlewares: Middleware[]) {
   if (!Array.isArray(middlewares)) {
@@ -11,8 +12,8 @@ export function composeMiddlewares(middlewares: Middleware[]) {
     }
   }
 
-  return async function runStack<D, C extends Command, R>(
-    context: Context<D, C, R>,
+  return async function runStack<D, A extends Action, R>(
+    context: Context<D, A, R>,
   ): Promise<unknown> {
     let index = -1;
 
