@@ -4,18 +4,27 @@
   "description": "Ligth & simple CQRS application framework",
   "main": "index.js",
   "scripts": {
-    "test": "jest",
-    "build": "tsc"
+    "build": "tsc",
+    "typecheck": "tsc --noEmit",
+    "doc": "typedoc --options typedoc.json",
+    "doc:open": "npm run doc && open ./docs/modules.html ",
+    "test": "NODE_ENV=test jest",
+    "test:cucumber": "npm run build && cucumber-js --format html > index.html",
+    "preversion": "npm run doc && npm test",
+    "version": "npm run build",
+    "postversion": "git push && git push --tags"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@tsconfig/node14": "^1.0.1",
+    "@cucumber/cucumber": "^7.3.2",
+    "@tsconfig/node16": "^1.0.2",
     "@types/jest": "^27.0.3",
     "@types/node": "^17.0.0",
     "jest": "^27.4.5",
     "ts-jest": "^27.1.2",
     "ts-node": "^10.4.0",
+    "typedoc": "^0.22.12",
     "typescript": "^4.5.4"
   },
   "jest": {
@@ -38,5 +47,9 @@
     "transform": {
       "^.+\\.ts$": "ts-jest"
     }
+  },
+  "volta": {
+    "node": "16.14.0",
+    "npm": "8.5.1"
   }
 }
