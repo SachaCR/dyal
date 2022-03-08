@@ -1,12 +1,72 @@
 import { Query, Context, Action, Next } from './interfaces';
 
-export type QueryHandler = <D, Q extends Query, R>(
-  context: Context<D, Q, R>,
-) => Promise<R>;
+/**
+ * The query bus registers queries handlers that will be called if the query's name matches.
+ * It exposes a middleware function that you can use in an app to mount the query bus on the middleware stack.
+ * @example
+ *```typescript
+ * const app = createApp(dependencies);
+ * const queryBus: QueryBus = createQueryBus();
+ * queryBus.register('QueryA', getCountQueryHandler);
+ * queryBus.register('QueryB', getCountQueryHandler);
+ * queryBus.register('QueryC', getCountQueryHandler);
+ * app.on('query').use(queryBus.middleware);
+ * ```
+ */
+export interface QueryBus {
+  /**
+   * This function allows to declare a handler for a given query name.
+   * @param queryName The query name that will trigger this command handler.
+   * @param queryHandler The query handler called on each query where the queryName matches.
+   * @example
+   *```typescript
+   * const app = createApp(dependencies);
+   * const queryBus: QueryBus = createQueryBus();
+   * queryBus.register('QueryA', getCountQueryHandler);
+   * queryBus.register('QueryB', getCountQueryHandler);
+   * queryBus.register('QueryC', getCountQueryHandler);
+   * app.on('query').use(queryBus.middleware);
+   * ```
+   */
+  register<D, Q extends Query, R>(
+    queryName: string,
+    queryHandler: (context: Context<D, Q, R>) => Promise<R>,
+  ): void;
 
-export type QueryBus = ReturnType<typeof createQueryBus>;
+  /**
+   * This function is the middleware that your app should use to handle queries.
+   * @param context
+   * @param next
+   * @example
+   *```typescript
+   * const app = createApp(dependencies);
+   * const queryBus: QueryBus = createQueryBus();
+   * queryBus.register('QueryA', getCountQueryHandler);
+   * queryBus.register('QueryB', getCountQueryHandler);
+   * queryBus.register('QueryC', getCountQueryHandler);
+   * app.on('query').use(queryBus.middleware);
+   * ```
+   */
+  middleware<D, A extends Action, R>(
+    context: Context<D, A, R>,
+    next: Next,
+  ): Promise<void>;
+}
 
-export function createQueryBus() {
+/**
+ * this function returns a QueryBus object. It allows you to declare queries handler that will be called if the query's name matches.
+ * @returns QueryBus
+ * @example
+ *```typescript
+ * const app = createApp(dependencies);
+ * const queryBus: QueryBus = createQueryBus();
+ * queryBus.register('QueryA', getCountQueryHandler);
+ * queryBus.register('QueryB', getCountQueryHandler);
+ * queryBus.register('QueryC', getCountQueryHandler);
+ * app.on('query').use(queryBus.middleware);
+ * ```
+ */
+export function createQueryBus(): QueryBus {
   const queryHandlersMap = new Map<
     string,
     (context: Context<any, any, any>) => Promise<any>
