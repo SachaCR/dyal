@@ -1,5 +1,5 @@
 export interface AnyCommand {
-  actionType: 'command';
+  type: 'command';
   name: 'AnyCommand';
   payload: { name: string };
 }
@@ -10,7 +10,7 @@ export interface AnyCommandResult {
 
 export async function anyCommandHandler(ctx: any): Promise<AnyCommandResult> {
   const { logger } = ctx.dependencies;
-  logger('Command handler', ctx.action);
-  const name = ctx.action.payload.name;
+  logger('Command handler', ctx.useCase);
+  const name = ctx.useCase.payload.name;
   return { fullName: `${name} Smith` };
 }

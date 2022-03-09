@@ -20,6 +20,6 @@ export async function countCommandHandler(
   ctx: CountCommandContext,
 ): Promise<CountCommandResult> {
   const logger = ctx.dependencies.logger;
-  logger('Command handler', ctx.action);
-  return { total: ctx.action.payload.count };
+  logger('Command handler', ctx.useCase);
+  return { total: ctx.useCase.payload.count };
 }

@@ -1,4 +1,4 @@
-import { Query, Context, Action, Next } from './interfaces';
+import { Query, Context, UseCase, Next } from './interfaces';
 
 /**
  * The query bus registers queries handlers that will be called if the query's name matches.
@@ -47,7 +47,7 @@ export interface QueryBus {
    * app.on('query').use(queryBus.middleware);
    * ```
    */
-  middleware<D, A extends Action, R>(
+  middleware<D, A extends UseCase, R>(
     context: Context<D, A, R>,
     next: Next,
   ): Promise<void>;
@@ -80,18 +80,18 @@ export function createQueryBus(): QueryBus {
       queryHandlersMap.set(queryName, queryHandler);
     },
 
-    middleware: async function queryBusRoute<D, A extends Action, R>(
+    middleware: async function queryBusRoute<D, A extends UseCase, R>(
       context: Context<D, A, R>,
       next: Next,
     ): Promise<void> {
-      const { action } = context;
+      const { useCase } = context;
 
-      if (action.actionType !== 'query') {
+      if (useCase.type !== 'query') {
         await next();
         return;
       }
 
-      const query = action as Query;
+      const query = useCase as Query;
 
       let queryHandler = queryHandlersMap.get(query.name);
 

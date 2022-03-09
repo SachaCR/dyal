@@ -51,7 +51,7 @@ async function run() {
   app.on('query').use(queryBus.middleware);
 
   const countCommand: CountCommand = {
-    actionType: 'command',
+    type: 'command',
     name: 'CountCommand',
     payload: {
       count: 5,
@@ -61,7 +61,7 @@ async function run() {
   const testCommand = new TestCommand('John');
 
   const anyCommand: AnyCommand = {
-    actionType: 'command',
+    type: 'command',
     name: 'AnyCommand',
     payload: {
       name: 'Default',
@@ -69,7 +69,7 @@ async function run() {
   };
 
   const getCountQuery: GetCountQuery = {
-    actionType: 'query',
+    type: 'query',
     name: 'GetCountQuery',
     filters: {},
   };

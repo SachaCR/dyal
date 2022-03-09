@@ -1,19 +1,19 @@
 /**
  * This represent the context that will be passed along the middleware stack
  * @typeParam D Dependencies of your application
- * @typeParam A The action to execute. It can be a Command or a Query.
+ * @typeParam A The usecase to execute. It can be a Command or a Query.
  * @typeParam R The command's result
  */
-export interface Context<D, A extends Action, R> {
+export interface Context<D, U extends UseCase, R> {
   dependencies: D;
-  action: A;
+  useCase: U;
   result?: R;
 }
 
 /**
- * An Action is either a Command or a Query
+ * A UseCase is either a Command or a Query
  */
-export type Action = Command | Query;
+export type UseCase = Command | Query;
 
 /**
  * The Query interface should be used to implement your queries types.
@@ -26,7 +26,7 @@ export type Action = Command | Query;
  * ```
  */
 export interface Query {
-  actionType: 'query';
+  type: 'query';
   name: any;
   filters: any;
 }
@@ -42,21 +42,21 @@ export interface Query {
  * ```
  */
 export interface Command {
-  actionType: 'command';
+  type: 'command';
   name: any;
   payload: any;
 }
 
 /**
  * Middleware takes a context and a next callback to pass the control the next middleware in the stack.
- * @params context This is the action context it contains dependencies and the action to handle.
+ * @params context This is the use case context it contains dependencies and the use case to handle.
  * @params next It's the callback to call to pass the control to the next middleware in the stack.
  */
-export type Middleware = <T extends Context<any, Action, any>>(
+export type Middleware = <T extends Context<any, UseCase, any>>(
   context: T,
   next: Next,
 ) => Promise<void>;
 
 export type Next = () => Promise<unknown>;
 
-export type TargetAction = 'query' | 'command' | 'all';
+export type UseCaseType = 'query' | 'command' | 'all';

@@ -24,7 +24,7 @@ describe('app.execute()', () => {
       describe('When I execute a CommandB command', () => {
         it('Then it should call CommandB handler', async () => {
           const result = await app.execute({
-            actionType: 'command',
+            type: 'command',
             name: 'CommandB',
             payload: {},
           });
@@ -39,7 +39,7 @@ describe('app.execute()', () => {
 
           try {
             await app.execute({
-              actionType: 'command',
+              type: 'command',
               name: 'UnknownCommand',
               payload: {},
             });

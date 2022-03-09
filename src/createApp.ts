@@ -1,4 +1,4 @@
-import { Action, TargetAction } from '.';
+import { UseCase, UseCaseType } from '.';
 import { composeMiddlewares } from './composeMiddlewares';
 
 import { Context, Middleware } from './interfaces';
@@ -16,7 +16,7 @@ import { Context, Middleware } from './interfaces';
  * }
  *
  * const countCommand: CountCommand = {
- *   actionType: 'command',
+ *   type: 'command',
  *   name: 'CountCommand',
  *   payload: {
  *    count: 5,
@@ -29,13 +29,13 @@ import { Context, Middleware } from './interfaces';
 export interface CQRSApp {
   /**
    *
-   * @param target It's the kind of action your middleware will be called for. Can be `query`, `command` or `all`
+   * @param target It's the kind of use case your middleware will be called for. Can be `query`, `command` or `all`
    * @example
    * ```typescript
    * app.on('command').use(commandHandlerMiddleware);
    * ```
    */
-  on(target: TargetAction): {
+  on(target: UseCaseType): {
     /**
      *
      * @param middleware middleware to add to the app stack
@@ -60,8 +60,8 @@ export interface CQRSApp {
   use(middleware: Middleware): void;
 
   /**
-   * @param action The action to execute.
-   * @type R The action's return type.
+   * @param useCase The useCase to execute.
+   * @type R The useCase's return type.
    * @returns R
    * @example
    * ```typescript
@@ -75,7 +75,7 @@ export interface CQRSApp {
    * }
    *
    * const countCommand: CountCommand = {
-   *   actionType: 'command',
+   *   type: 'command',
    *   name: 'CountCommand',
    *   payload: {
    *    count: 5,
@@ -85,7 +85,7 @@ export interface CQRSApp {
    * const result = await app.execute<CountCommandResult>(countCommand);
    * ```
    */
-  execute<R>(action: Action): Promise<R>;
+  execute<R>(useCase: UseCase): Promise<R>;
 }
 
 /**
@@ -101,9 +101,9 @@ export interface CQRSApp {
  * ```
  */
 export function createApp<D>(dependencies: D): CQRSApp {
-  const middlewares: { target: TargetAction; middleware: Middleware }[] = [];
+  const middlewares: { target: UseCaseType; middleware: Middleware }[] = [];
 
-  function use(target: TargetAction, middleware: Middleware) {
+  function use(target: UseCaseType, middleware: Middleware) {
     if (typeof middleware !== 'function') {
       throw new TypeError('Middleware must be composed of functions');
     }
@@ -112,7 +112,7 @@ export function createApp<D>(dependencies: D): CQRSApp {
   }
 
   return {
-    on: (target: TargetAction) => {
+    on: (target: UseCaseType) => {
       return {
         use: (middleware: Middleware) => {
           use(target, middleware);
@@ -124,10 +124,10 @@ export function createApp<D>(dependencies: D): CQRSApp {
       use('all', middleware);
     },
 
-    execute: async <R>(action: Action): Promise<R> => {
+    execute: async <R>(useCase: UseCase): Promise<R> => {
       const targetMiddlewares = middlewares.reduce(
         (selectedMids: Middleware[], mid) => {
-          if (mid.target === 'all' || mid.target === action.actionType) {
+          if (mid.target === 'all' || mid.target === useCase.type) {
             selectedMids.push(mid.middleware);
           }
 
@@ -138,9 +138,9 @@ export function createApp<D>(dependencies: D): CQRSApp {
 
       const midStack = composeMiddlewares(targetMiddlewares);
 
-      const context: Context<D, Action, R> = {
+      const context: Context<D, UseCase, R> = {
         dependencies,
-        action,
+        useCase,
         result: undefined,
       };
 

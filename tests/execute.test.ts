@@ -31,7 +31,7 @@ describe('app.execute()', () => {
       describe('When I execute a tests command', () => {
         it('Then it should call middlewares in order and then backward', async () => {
           const result = await app.execute({
-            actionType: 'command',
+            type: 'command',
             name: 'TestCommand',
             payload: {},
           });
@@ -75,7 +75,7 @@ describe('app.execute()', () => {
 
             try {
               await app.execute({
-                actionType: 'command',
+                type: 'command',
                 name: 'TestCommand',
                 payload: {},
               });
@@ -124,7 +124,7 @@ describe('app.execute()', () => {
 
           try {
             await app.execute({
-              actionType: 'command',
+              type: 'command',
               name: 'TestCommand',
               payload: {},
             });
@@ -146,7 +146,7 @@ describe('app.execute()', () => {
 
           try {
             await app.execute({
-              actionType: 'command',
+              type: 'command',
               name: 'TestCommand',
               payload: {},
             });

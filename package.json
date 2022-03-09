@@ -1,7 +1,7 @@
 {
-  "name": "dar",
+  "name": "dal",
   "version": "1.0.0",
-  "description": "Ligth & simple CQRS application framework",
+  "description": "DAL for Decouple Application Layer. It's a ligth & simple application layer framework with CQRS utilities",
   "main": "index.js",
   "scripts": {
     "build": "tsc",

@@ -20,6 +20,6 @@ export async function getCountQueryHandler(
   ctx: CountQueryContext,
 ): Promise<GetCountQueryResult> {
   const logger = ctx.dependencies.logger;
-  logger('Query handler', ctx.action);
+  logger('Query handler', ctx.useCase);
   return { count: 123 };
 }

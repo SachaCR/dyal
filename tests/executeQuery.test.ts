@@ -24,7 +24,7 @@ describe('app.execute()', () => {
       describe('When I execute a QueryB Query', () => {
         it('Then it should call QueryB handler', async () => {
           const result = await app.execute({
-            actionType: 'query',
+            type: 'query',
             name: 'QueryB',
             filters: {},
           });
@@ -39,7 +39,7 @@ describe('app.execute()', () => {
 
           try {
             await app.execute({
-              actionType: 'query',
+              type: 'query',
               name: 'UnknownQuery',
               filters: {},
             });

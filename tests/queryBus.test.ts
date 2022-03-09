@@ -19,7 +19,7 @@ describe('QueryBus', () => {
     describe('When I use the query bus middleware to execute a query ', () => {
       it('Then the correct handler is called And the Next callback is not called', async () => {
         const queryB: Query = {
-          actionType: 'query',
+          type: 'query',
           name: 'QueryB',
           filters: {},
         };
@@ -27,7 +27,7 @@ describe('QueryBus', () => {
         const mockNext = jest.fn(async () => {});
 
         const context = {
-          action: queryB,
+          useCase: queryB,
           dependencies: {},
           result: undefined,
         };
@@ -42,7 +42,7 @@ describe('QueryBus', () => {
     describe('When I use the query bus middleware to execute a command ', () => {
       it('Then the next callback is called directly', async () => {
         const command: Command = {
-          actionType: 'command',
+          type: 'command',
           name: 'Command',
           payload: {},
         };
@@ -50,7 +50,7 @@ describe('QueryBus', () => {
         const mockNext = jest.fn(async () => {});
 
         const context = {
-          action: command,
+          useCase: command,
           dependencies: {},
           result: undefined,
         };
@@ -65,7 +65,7 @@ describe('QueryBus', () => {
     describe('When I use the query bus middleware to execute an unregistered query ', () => {
       it('Then an error is thrown', async () => {
         const queryD: Query = {
-          actionType: 'query',
+          type: 'query',
           name: 'QueryD',
           filters: {},
         };
@@ -73,7 +73,7 @@ describe('QueryBus', () => {
         const mockNext = jest.fn(async () => {});
 
         const context = {
-          action: queryD,
+          useCase: queryD,
           dependencies: {},
           result: undefined,
         };

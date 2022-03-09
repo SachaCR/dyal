@@ -1,4 +1,4 @@
-import { Action } from '.';
+import { UseCase } from '.';
 import { Middleware, Context } from './interfaces';
 
 export function composeMiddlewares(middlewares: Middleware[]) {
@@ -12,7 +12,7 @@ export function composeMiddlewares(middlewares: Middleware[]) {
     }
   }
 
-  return async function runStack<D, A extends Action, R>(
+  return async function runStack<D, A extends UseCase, R>(
     context: Context<D, A, R>,
   ): Promise<unknown> {
     let index = -1;

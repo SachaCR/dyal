@@ -8,7 +8,7 @@ export async function loggerMiddleware(
 ): Promise<void> {
   const { logger } = ctx.dependencies;
   logger(`-------------------------------------------------------------`);
-  logger(`Start executing action: ${ctx.action.actionType} ${ctx.action.name}`);
+  logger(`Start executing use case: ${ctx.useCase.type} ${ctx.useCase.name}`);
   await next();
-  logger('Action executed');
+  logger('UseCase executed');
 }

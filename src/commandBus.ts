@@ -1,4 +1,4 @@
-import { Command, Context, Action, Next } from './interfaces';
+import { Command, Context, UseCase, Next } from './interfaces';
 
 /**
  * The command bus registers command handlers that will be called if the command's name matches.
@@ -43,7 +43,7 @@ export interface CommandBus {
    * app.on('command').use(commandBus.middleware);
    * ```
    */
-  middleware<D, A extends Action, R>(
+  middleware<D, A extends UseCase, R>(
     context: Context<D, A, R>,
     next: Next,
   ): Promise<void>;
@@ -76,17 +76,17 @@ export function createCommandBus(): CommandBus {
       commandHandlersMap.set(commandName, commandHandler);
     },
 
-    middleware: async function commandBusRoute<D, A extends Action, R>(
+    middleware: async function commandBusRoute<D, A extends UseCase, R>(
       context: Context<D, A, R>,
       next: Next,
     ): Promise<void> {
-      const { action } = context;
-      if (action.actionType !== 'command') {
+      const { useCase } = context;
+      if (useCase.type !== 'command') {
         await next();
         return;
       }
 
-      const command = action as Command;
+      const command = useCase as Command;
 
       let commandHandler = commandHandlersMap.get(command.name);
 

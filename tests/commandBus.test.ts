@@ -19,7 +19,7 @@ describe('CommandBus', () => {
     describe('When I use the command bus middleware to execute a command ', () => {
       it('Then the correct handler is called And the Next callback is not called', async () => {
         const commandB: Command = {
-          actionType: 'command',
+          type: 'command',
           name: 'CommandB',
           payload: {},
         };
@@ -27,7 +27,7 @@ describe('CommandBus', () => {
         const mockNext = jest.fn(async () => {});
 
         const context = {
-          action: commandB,
+          useCase: commandB,
           dependencies: {},
           result: undefined,
         };
@@ -42,7 +42,7 @@ describe('CommandBus', () => {
     describe('When I use the command bus middleware to execute a query ', () => {
       it('Then the next callback is called directly', async () => {
         const query: Query = {
-          actionType: 'query',
+          type: 'query',
           name: 'Query',
           filters: {},
         };
@@ -50,7 +50,7 @@ describe('CommandBus', () => {
         const mockNext = jest.fn(async () => {});
 
         const context = {
-          action: query,
+          useCase: query,
           dependencies: {},
           result: undefined,
         };
@@ -65,7 +65,7 @@ describe('CommandBus', () => {
     describe('When I use the command bus middleware to execute an unregistered command ', () => {
       it('Then an error is thrown', async () => {
         const commandD: Command = {
-          actionType: 'command',
+          type: 'command',
           name: 'CommandD',
           payload: {},
         };
@@ -73,7 +73,7 @@ describe('CommandBus', () => {
         const mockNext = jest.fn(async () => {});
 
         const context = {
-          action: commandD,
+          useCase: commandD,
           dependencies: {},
           result: undefined,
         };
