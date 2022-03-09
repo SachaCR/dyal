@@ -1,16 +1,17 @@
-Feature: Execute a command?
-  Executing a command with an app
+Feature: Execute a command with a CQRS application
+  Execute a command with a CQRS application and use the appropriate handler.
 
-  Scenario Outline: Execute a command
+  Scenario Outline: Execute a command with a CQRS application
     Given a CQRS app 
-    And command handlers are regitered for command types A, B ,C
-    When I execute a "<commandType>" command
-    Then it should return "<result>"
+    And command handlers are registered for command types A, B ,C
+    When I execute a "<actionName>" "<actionType>"
+    Then it should return the expected result: "<result>"
 
   Examples:
-    | commandType | result        |
-    | CommandA    | A             |
-    | CommandB    | B             |
-    | CommandC    | C             |
-    | CommandD    | RangeError    |
+    | actionType  | actionName  | result        |
+    | command     | CommandA    | A             |
+    | command     | CommandB    | B             |
+    | command     | CommandC    | C             |
+    | command     | CommandD    | RangeError    |    
 
+    

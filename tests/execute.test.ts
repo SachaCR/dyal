@@ -1,8 +1,8 @@
 import { Context, createApp, Next } from '../src';
 
 describe('app.execute()', () => {
-  describe('Given I an app', () => {
-    describe('With multiple middleware', () => {
+  describe('Given an app', () => {
+    describe('With multiple middlewares', () => {
       const app = createApp({
         steps: [],
       });
