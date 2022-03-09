@@ -1,8 +1,33 @@
 # cqrs-app
 
-Simple CQRS app framework
+Simple application layer framework with CQRS tooling
 
-# Example Usage Overview:
+This framework helps you decouple your application layer from your presentation layer.
+
+It is inspired from Koa for the middlewares implementation except that it does not couple your application to HTTP presentation layer.
+It let you free to choose any way to expose your app commands with HTTP, CLI, gRPC, etc...
+
+Also this framework allows you to implement CQRS pattern by providing a command bus and query bus utilities.
+Notice that you are not forced to use them and you can write your own middlewares to handle action on your app.
+
+# Basic Example Usage:
+
+```typescript
+type AppDependencies = {
+  database: DBConnection;
+};
+
+const app = createApp({
+  database,
+});
+
+app.use(async (ctx: Context<any, any, any>, next: Next) => {
+  const results = await ctx.dependencies.database.query('SELECT * FROM ...');
+  ctx.result = results;
+});
+```
+
+# CQRS Example Usage Overview:
 
 You can retrieve the full example here on github
 
