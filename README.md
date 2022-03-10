@@ -9,7 +9,7 @@ It let you free to choose any way to expose your app commands with HTTP, CLI, gR
 
 # Technical Documentation:
 
-The documentation is available here.
+The documentation is available [here](https://sachacr.github.io/dyal/).
 
 # Basic Example:
 
