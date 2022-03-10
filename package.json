@@ -1,13 +1,12 @@
 {
-  "name": "dal",
+  "name": "dyal",
   "version": "1.0.0",
-  "description": "DAL for Decouple Application Layer. It's a ligth & simple application layer framework with CQRS utilities",
+  "description": "DYAL for Decouple Your Application Layer. It's a ligth & simple application layer framework with CQRS utilities",
   "main": "index.js",
   "scripts": {
     "build": "tsc",
     "typecheck": "tsc --noEmit",
     "doc": "typedoc --options typedoc.json",
-    "doc:open": "npm run doc && open ./docs/modules.html ",
     "test": "NODE_ENV=test jest",
     "test:cucumber": "cucumber-js",
     "test:cucumber:html": "cucumber-js -p html > features/reports/index.html",

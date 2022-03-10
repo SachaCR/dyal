@@ -1,7 +1,6 @@
-import assert from 'assert';
-import { Given, When, Then } from '@cucumber/cucumber';
-
-import { createApp, createCommandBus, createQueryBus } from '../../src';
+const assert = require('assert');
+const { Given, When, Then } = require('@cucumber/cucumber');
+const { createApp, createCommandBus, createQueryBus } = require('../../src');
 
 Given('a DYAL app', function () {
   const app = createApp({});
@@ -56,7 +55,7 @@ When(
     try {
       const result = await this.app.execute(command);
       this.result = result;
-    } catch (err: any) {
+    } catch (err) {
       this.result = err.name;
     }
   },

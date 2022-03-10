@@ -1,0 +1,37 @@
+name: test
+
+on:
+  push:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Use Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 16.14.0
+
+      - name: Install dependencies
+        run: |
+          node --version
+          npm --version
+          npm install
+
+      - name: Check typing
+        run: npm run check-types
+
+      - name: Run unit tests
+        run: npm test
+
+      - name: Run feature tests
+        run: npm run test:cucumber
+
+      - name: Generate documentation
+        run: npm run doc
+
+        env:
+          CI: true

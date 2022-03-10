@@ -3,7 +3,7 @@ import assert from 'assert';
 
 import { Context, createApp, Next } from '../../src';
 
-Given('a CQRS app with a test context', function () {
+Given('a DYAL app with a test context', function () {
   const app = createApp({
     steps: [],
   });
@@ -38,9 +38,9 @@ Given(
   },
 );
 
-When('I execute an action', async function () {
+When('I execute a use case', async function () {
   const result = await this.app.execute({
-    actionType: 'command',
+    type: 'command',
     name: 'TestCommand',
     payload: {},
   });

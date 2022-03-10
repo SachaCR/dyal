@@ -1,33 +1,71 @@
-# cqrs-app
+# DYAL
 
 Simple application layer framework with CQRS tooling
 
-This framework helps you decouple your application layer from your presentation layer.
+This framework helps you Decouple Your Application Layer (DYAL) from your presentation layer.
 
 It is inspired from Koa for the middlewares implementation except that it does not couple your application to HTTP presentation layer.
 It let you free to choose any way to expose your app commands with HTTP, CLI, gRPC, etc...
 
-Also this framework allows you to implement CQRS pattern by providing a command bus and query bus utilities.
-Notice that you are not forced to use them and you can write your own middlewares to handle action on your app.
+# Technical Documentation:
 
-# Basic Example Usage:
+The documentation is available here.
+
+# Basic Example:
 
 ```typescript
 type AppDependencies = {
   database: DBConnection;
+  logger: Logger;
 };
 
 const app = createApp({
   database,
 });
 
-app.use(async (ctx: Context<any, any, any>, next: Next) => {
+app.use(async (ctx: any) => {
   const results = await ctx.dependencies.database.query('SELECT * FROM ...');
   ctx.result = results;
 });
 ```
 
-# CQRS Example Usage Overview:
+# Typed Context Example:
+
+You can type your handler context to know which `UseCase` it will handle, what `result` it must return and which are the `dependencies` that are available on the context.
+
+```typescript
+export type CountCommandContext = Context<
+  AppDependencies,
+  CountCommand,
+  CountCommandResult
+>;
+
+type AppDependencies = {
+  logger: Logger;
+};
+
+export interface CountCommand extends Command {
+  name: 'CountCommand';
+  payload: { count: number };
+}
+
+export interface CountCommandResult {
+  total: number;
+}
+
+export async function countCommandHandler(
+  ctx: CountCommandContext,
+): Promise<CountCommandResult> {
+  const logger = ctx.dependencies.logger;
+  logger('Command handler', ctx.useCase);
+  return { total: ctx.useCase.payload.count + 1 };
+}
+```
+
+Also this framework allows you to implement CQRS pattern by providing a command bus and query bus utilities.
+Notice that you are not forced to use them and you can write your own middlewares to handle use cases on your app.
+
+# CQRS Example:
 
 You can retrieve the full example here on github
 
@@ -62,6 +100,23 @@ You can retrieve the full example here on github
 }
 ```
 
-# Documentation:
+# Middlewares:
 
-The documentation is available here.
+You can create your own middleware like this:
+
+```typescript
+const dependencies: AppDependencies = { logger: console.log };
+
+async function myLoggerMiddleware(
+  ctx: Context<any, AppDependencies, any>,
+  next: Next,
+): Promise<void> {
+  const { logger } = ctx.dependencies;
+  logger(`Executing use case: ${ctx.useCase.type} ${ctx.useCase.name}`);
+  await next();
+}
+
+const app = createApp(dependencies);
+
+app.use(myLoggerMiddleware);
+```

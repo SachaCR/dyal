@@ -26,7 +26,7 @@ import { Context, Middleware } from './interfaces';
  * const result = await app.execute<CountCommandResult>(countCommand);
  * ```
  */
-export interface CQRSApp {
+export interface DyalApp {
   /**
    *
    * @param target It's the kind of use case your middleware will be called for. Can be `query`, `command` or `all`
@@ -100,7 +100,7 @@ export interface CQRSApp {
  * const queryResult = await app.execute(query);
  * ```
  */
-export function createApp<D>(dependencies: D): CQRSApp {
+export function createApp<D>(dependencies: D): DyalApp {
   const middlewares: { target: UseCaseType; middleware: Middleware }[] = [];
 
   function use(target: UseCaseType, middleware: Middleware) {
