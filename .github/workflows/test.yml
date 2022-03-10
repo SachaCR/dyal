@@ -22,7 +22,7 @@ jobs:
           npm install
 
       - name: Check typing
-        run: npm run check-types
+        run: npm run check:types
 
       - name: Run unit tests
         run: npm test

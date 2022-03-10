@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "tsc",
-    "typecheck": "tsc --noEmit",
+    "check:types": "tsc --noEmit",
     "doc": "typedoc --options typedoc.json",
     "test": "NODE_ENV=test jest",
     "test:cucumber": "cucumber-js",
