@@ -20,7 +20,7 @@
     "version": "npm run build",
     "postversion": "git push && git push --tags"
   },
-  "author": "",
+  "author": "SachaCR",
   "license": "ISC",
   "devDependencies": {
     "@cucumber/cucumber": "^7.3.2",
