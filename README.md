@@ -10,7 +10,7 @@ It let you free to choose any way to expose your app commands with HTTP, CLI, gR
 # Documentation:
 
 - [Type Documentation](https://sachacr.github.io/dyal/)
-- [Code Coverage Report](https://sachacr.github.io/dyal/lcov-report/index.html)
+- [Code Coverage Report](https://sachacr.github.io/dyal/jest/lcov-report/index.html)
 - [Cucumber Tests Report](https://sachacr.github.io/dyal/features/reports/index.html)
 
 # Basic Example:
