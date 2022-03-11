@@ -2,7 +2,11 @@
   "name": "dyal",
   "version": "1.0.0",
   "description": "DYAL for Decouple Your Application Layer. It's a ligth & simple application layer framework with CQRS utilities",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "/dist"
+  ],
   "scripts": {
     "prebuild": "npm run doc && npm run test && npm run test:cucumber:html",
     "build": "tsc",
