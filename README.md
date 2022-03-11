@@ -1,6 +1,6 @@
 # DYAL
 
-![test](https://github.com/github/docs/actions/workflows/test.yml/badge.svg)
+![test](https://github.com/SachaCR/dyal/actions/workflows/test.yml/badge.svg)
 
 Simple application layer framework with CQRS tooling
 
