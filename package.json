@@ -30,6 +30,13 @@
     "url": "https://github.com/SachaCR/dyal/issues"
   },
   "homepage": "https://github.com/SachaCR/dyal#readme",
+  "keywords": [
+    "CQRS",
+    "DDD",
+    "application layer",
+    "domain driven",
+    "framework"
+  ],
   "devDependencies": {
     "@cucumber/cucumber": "^7.3.2",
     "@cucumber/pretty-formatter": "^1.0.0-alpha.1",
