@@ -7,22 +7,28 @@ This framework helps you Decouple Your Application Layer (DYAL) from your presen
 It is inspired from Koa for the middlewares implementation except that it does not couple your application to HTTP presentation layer.
 It let you free to choose any way to expose your app commands with HTTP, CLI, gRPC, etc...
 
-# Technical Documentation:
+# Documentation:
 
-The documentation is available [here](https://sachacr.github.io/dyal/).
+- [Type Documentation](https://sachacr.github.io/dyal/)
+- [Code Coverage Report](https://sachacr.github.io/dyal/lcov-report/index.html)
+- [Cucumber Tests Report](https://sachacr.github.io/dyal/features/reports/index.html)
 
 # Basic Example:
 
 ```typescript
+// Declare the dependencies you will inject into your app.
 type AppDependencies = {
   database: DBConnection;
   logger: Logger;
 };
 
+// Build the app and inject dependencies.
 const app = createApp({
   database,
+  logger,
 });
 
+// Mount handlers and middelwares to handle you app's use cases.
 app.use(async (ctx: any) => {
   const results = await ctx.dependencies.database.query('SELECT * FROM ...');
   ctx.result = results;
@@ -62,7 +68,7 @@ export async function countCommandHandler(
 }
 ```
 
-Also this framework allows you to implement CQRS pattern by providing a command bus and query bus utilities.
+Also DYAL allows you to implement CQRS pattern by providing a command bus and query bus utilities.
 Notice that you are not forced to use them and you can write your own middlewares to handle use cases on your app.
 
 # CQRS Example:

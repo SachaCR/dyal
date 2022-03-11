@@ -1,10 +1,10 @@
 {
   "readme": "README.md",
   "includeVersion": true,
-  "name": "CQRS App",
+  "name": "DYAL",
   "theme": "default",
   "entryPoints": ["src/index.ts"],
-  "out": "docs",
+  "out": "docs/typedoc",
   "tsconfig": "tsconfig.json",
   "excludePrivate": true,
   "excludeProtected": true,

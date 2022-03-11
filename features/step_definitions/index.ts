@@ -8,41 +8,47 @@ Given('a DYAL app', function () {
   this.app = app;
 });
 
-Given('command handlers are registered for command types A, B ,C', function () {
-  const commandBus = createCommandBus();
+Given(
+  'command handlers have been registered for command types A, B ,C',
+  function () {
+    const commandBus = createCommandBus();
 
-  commandBus.register('CommandA', async (ctx) => {
-    return 'A';
-  });
+    commandBus.register('CommandA', async (ctx) => {
+      return 'A';
+    });
 
-  commandBus.register('CommandB', async (ctx) => {
-    return 'B';
-  });
+    commandBus.register('CommandB', async (ctx) => {
+      return 'B';
+    });
 
-  commandBus.register('CommandC', async (ctx) => {
-    return 'C';
-  });
+    commandBus.register('CommandC', async (ctx) => {
+      return 'C';
+    });
 
-  this.app.on('command').use(commandBus.middleware);
-});
+    this.app.on('command').use(commandBus.middleware);
+  },
+);
 
-Given('query handlers are registered for queries types D, E ,F', function () {
-  const queryBus = createQueryBus();
+Given(
+  'query handlers have been registered for queries types D, E ,F',
+  function () {
+    const queryBus = createQueryBus();
 
-  queryBus.register('QueryD', async (ctx) => {
-    return 'D';
-  });
+    queryBus.register('QueryD', async (ctx) => {
+      return 'D';
+    });
 
-  queryBus.register('QueryE', async (ctx) => {
-    return 'E';
-  });
+    queryBus.register('QueryE', async (ctx) => {
+      return 'E';
+    });
 
-  queryBus.register('QueryF', async (ctx) => {
-    return 'F';
-  });
+    queryBus.register('QueryF', async (ctx) => {
+      return 'F';
+    });
 
-  this.app.on('query').use(queryBus.middleware);
-});
+    this.app.on('query').use(queryBus.middleware);
+  },
+);
 
 When(
   'I execute a {string} {string}',
@@ -57,7 +63,7 @@ When(
       const result = await this.app.execute(command);
       this.result = result;
     } catch (err: any) {
-      this.result = err.name;
+      this.result = `${err.name}: ${err.message}`;
     }
   },
 );

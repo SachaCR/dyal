@@ -9,9 +9,9 @@
     "doc": "typedoc --options typedoc.json",
     "test": "NODE_ENV=test jest",
     "test:cucumber": "cucumber-js",
-    "test:cucumber:html": "cucumber-js -p html > features/reports/index.html",
+    "test:cucumber:html": "cucumber-js -p html > docs/features/reports/index.html",
     "test:cucumber:pretty": "cucumber-js -p pretty",
-    "preversion": "npm run doc && npm test",
+    "preversion": "npm run doc && npm test && npm run test:cucumber:html",
     "version": "npm run build",
     "postversion": "git push && git push --tags"
   },
@@ -42,6 +42,7 @@
     "collectCoverageFrom": [
       "src/**/*.ts"
     ],
+    "coverageDirectory": "docs/jest",
     "coverageReporters": [
       "lcov",
       "text-summary"

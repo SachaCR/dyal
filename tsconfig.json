@@ -8,7 +8,7 @@
     "examples",
     "coverage",
     "docs",
-    // "features",
+    "features",
     "cucumber.js"
   ],
   "compilerOptions": {
