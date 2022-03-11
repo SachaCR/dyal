@@ -1,11 +1,17 @@
 # DYAL
 
+![test](https://github.com/github/docs/actions/workflows/test.yml/badge.svg)
+
 Simple application layer framework with CQRS tooling
 
 This framework helps you Decouple Your Application Layer (DYAL) from your presentation layer.
 
 It is inspired from Koa for the middlewares implementation except that it does not couple your application to HTTP presentation layer.
 It let you free to choose any way to expose your app commands with HTTP, CLI, gRPC, etc...
+
+[![https://nodei.co/npm/dyal.png?downloads=true&downloadRank=true&stars=true](https://nodei.co/npm/dyal.png?downloads=true&downloadRank=true&stars=true)](https://www.npmjs.com/package/dyal)
+
+`npm install dyal`
 
 # Documentation:
 
