@@ -9,7 +9,8 @@
     "coverage",
     "docs",
     "features",
-    "cucumber.js"
+    "cucumber.js",
+    "tests"
   ],
   "compilerOptions": {
     "outDir": "dist",

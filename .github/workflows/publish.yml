@@ -3,14 +3,14 @@ name: Publish
 on:
   push:
     tags:
-      - "**"
+      - '**'
 
 jobs:
   test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      
+
       - name: Use Node.js
         uses: actions/setup-node@v1
         with:
@@ -19,9 +19,8 @@ jobs:
       - name: Publishing
         run: |
           npm install
-          npm test
           npm run build
           npm publish
-          
+
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
