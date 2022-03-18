@@ -10,7 +10,8 @@ Feature: Add an item to my inventory
   Scenario: I add an item in a full inventory
     Given my inventory is full with a sword, a shield and a bow
     When I try to add a spear
-    Then the spear is not added to the inventory
+    Then it returns that my inventory is full
+    And the spear is not added to the inventory
 
 
 

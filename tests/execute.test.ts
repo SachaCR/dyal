@@ -23,9 +23,15 @@ describe('app.execute()', () => {
         ctx.dependencies.steps.push('out mid 2');
       });
 
-      app.use(async (ctx: Context<any, any, any>, next: Next) => {
+      app.use(async (ctx: Context<any, any, any>) => {
         ctx.dependencies.steps.push('mid 3');
         ctx.result = ctx.dependencies.steps;
+      });
+
+      app.use(async (ctx: Context<any, any, any>, next: Next) => {
+        ctx.dependencies.steps.push('in mid 4');
+        await next();
+        ctx.dependencies.steps.push('out mid 4');
       });
 
       describe('When I execute a tests command', () => {

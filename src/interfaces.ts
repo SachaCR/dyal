@@ -14,7 +14,6 @@ export interface Context<D, U extends UseCase, R> {
  * A UseCase is either a Command or a Query
  */
 export type UseCase = Command | Query;
-
 /**
  * The Query interface should be used to implement your queries types.
  * @example
@@ -52,7 +51,7 @@ export interface Command {
  * @params context This is the use case context it contains dependencies and the use case to handle.
  * @params next It's the callback to call to pass the control to the next middleware in the stack.
  */
-export type Middleware = <T extends Context<any, UseCase, any>>(
+export type Middleware = <T extends Context<any, any, any>>(
   context: T,
   next: Next,
 ) => Promise<void>;

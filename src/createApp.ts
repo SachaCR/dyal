@@ -3,7 +3,7 @@ import { composeMiddlewares } from './composeMiddlewares';
 
 import { Context, Middleware } from './interfaces';
 /**
- * A CQRS app
+ * A DYAL app
  * @example
  * ```typescript
  * const app = createApp(dependencies);
