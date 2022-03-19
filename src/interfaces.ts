@@ -1,7 +1,7 @@
 /**
  * This represent the context that will be passed along the middleware stack
  * @typeParam D Dependencies of your application
- * @typeParam A The usecase to execute. It can be a Command or a Query.
+ * @typeParam U The usecase to execute. It can be a Command or a Query.
  * @typeParam R The command's result
  */
 export interface Context<D, U extends UseCase, R> {
