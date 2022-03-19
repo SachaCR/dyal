@@ -21,6 +21,8 @@ It let you free to choose any way to expose your app commands with HTTP, CLI, gR
 
 # Basic Example:
 
+You can find this example and more advanced [here](https://github.com/SachaCR/dyal/tree/main/examples)
+
 ```typescript
 // Declare the dependencies you will inject into your app.
 type AppDependencies = {
@@ -45,6 +47,8 @@ app.use(async (ctx: any) => {
 
 You can type your handler context to know which `UseCase` it will handle, what `result` it must return and which are the `dependencies` that are available on the context.
 
+You can find this example and more advanced [here](https://github.com/SachaCR/dyal/tree/main/examples)
+
 ```typescript
 export type CountCommandContext = Context<
   AppDependencies,
@@ -65,12 +69,10 @@ export interface CountCommandResult {
   total: number;
 }
 
-export async function countCommandHandler(
-  ctx: CountCommandContext,
-): Promise<CountCommandResult> {
+export async function countCommandHandler(ctx: CountCommandContext) {
   const logger = ctx.dependencies.logger;
   logger('Command handler', ctx.useCase);
-  return { total: ctx.useCase.payload.count + 1 };
+  ctx.result = { total: ctx.useCase.payload.count + 1 };
 }
 ```
 
@@ -79,7 +81,7 @@ Notice that you are not forced to use them and you can write your own middleware
 
 # CQRS Example:
 
-You can retrieve the full example here on github
+You can find this example and more advanced [here](https://github.com/SachaCR/dyal/tree/main/examples)
 
 ```typescript
   const dependencies: AppDependencies = { logger: console.log };
