@@ -1,4 +1,4 @@
-import { UseCase, Context } from '../src';
+import { UseCase, Context } from '../../src';
 
 export interface AppDependencies {
   logger: (...args: any[]) => void;

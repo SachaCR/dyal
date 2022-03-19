@@ -1,4 +1,4 @@
-import { Command, Context } from '../../src';
+import { Command, Context } from '../../../src';
 import { AppDependencies } from '../interfaces';
 
 export type TestCommandContext = Context<

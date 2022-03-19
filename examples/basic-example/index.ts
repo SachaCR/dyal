@@ -4,7 +4,7 @@ import {
   createCommandBus,
   QueryBus,
   createQueryBus,
-} from '../src';
+} from '../../src';
 
 import {
   CountCommand,

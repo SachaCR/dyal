@@ -1,4 +1,4 @@
-import { Next } from '../../src';
+import { Next } from '../../../src';
 
 import { AppContext } from '../interfaces';
 

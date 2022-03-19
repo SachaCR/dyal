@@ -1,4 +1,4 @@
-import { Query, Context } from '../../src';
+import { Query, Context } from '../../../src';
 import { AppDependencies } from '../interfaces';
 
 export type CountQueryContext = Context<
