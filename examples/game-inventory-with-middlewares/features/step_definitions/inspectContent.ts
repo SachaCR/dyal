@@ -1,7 +1,7 @@
 import assert from 'assert';
 import { Given, When, Then } from '@cucumber/cucumber';
 
-import { InspectContentCommand } from '../../queries/inspectContent';
+import { InspectContentQuery } from '../../queries/inspectContent';
 import { createGameInventoryApp } from '../..';
 
 Given('there is a sword in my inventory', function () {
@@ -10,13 +10,13 @@ Given('there is a sword in my inventory', function () {
 });
 
 When('I inspect its content', async function () {
-  const inspectContentCommand: InspectContentCommand = {
-    type: 'command',
+  const inspectContentQuery: InspectContentQuery = {
+    type: 'query',
     name: 'InspectContent',
-    payload: undefined,
+    filters: undefined,
   };
 
-  const result = await this.inventoryApp.execute(inspectContentCommand);
+  const result = await this.inventoryApp.execute(inspectContentQuery);
 
   this.result = result;
 });

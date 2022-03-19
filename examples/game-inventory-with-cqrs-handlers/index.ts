@@ -20,11 +20,12 @@ export function createGameInventoryApp(inventory: GameInventory) {
   commandBus.register('AddItem', addItemHandler);
   commandBus.register('RemoveItem', removeItemHandler);
 
-  const queryBus = createQueryBus();
-  commandBus.register('InspectContent', inspectContentHandler);
+  gameInventoryApp.on('command').use(commandBus.middleware);
 
-  gameInventoryApp.use(commandBus.middleware);
-  gameInventoryApp.use(queryBus.middleware);
+  const queryBus = createQueryBus();
+  queryBus.register('InspectContent', inspectContentHandler);
+
+  gameInventoryApp.on('query').use(queryBus.middleware);
 
   return gameInventoryApp;
 }

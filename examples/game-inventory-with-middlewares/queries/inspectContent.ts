@@ -1,16 +1,16 @@
-import { Command, Context, Next } from 'dyal';
+import { Context, Next, Query } from 'dyal';
 
 import { AppDependencies, GameObject } from '..';
 
 type InspectContentContext = Context<
   AppDependencies,
-  InspectContentCommand,
+  InspectContentQuery,
   InspectContentResult
 >;
 
-export interface InspectContentCommand extends Command {
+export interface InspectContentQuery extends Query {
   name: 'InspectContent';
-  payload: undefined;
+  filters: undefined;
 }
 
 export type InspectContentResult = GameObject[];
@@ -22,7 +22,7 @@ export async function inspectContentMiddleware(
   const { inventory } = context.dependencies;
   const { useCase } = context;
 
-  if (useCase.type === 'command' && useCase.name !== 'InspectContent') {
+  if (useCase.type !== 'query' || useCase.name !== 'InspectContent') {
     await next();
     return;
   }

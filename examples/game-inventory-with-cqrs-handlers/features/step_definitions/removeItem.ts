@@ -1,7 +1,7 @@
 import assert from 'assert';
 import { When, Then } from '@cucumber/cucumber';
 
-import { InspectContentCommand } from '../../queries/inspectContent';
+import { InspectContentQuery } from '../../queries/inspectContent';
 import { RemoveItemCommand } from '../../commands/removeItem';
 
 When('I remove the shield', async function () {
@@ -27,12 +27,12 @@ Then('it returns the item has been removed', function () {
 });
 
 Then('the item is removed from the inventory', async function () {
-  const inspectContentCommand: InspectContentCommand = {
-    type: 'command',
+  const inspectContentQuery: InspectContentQuery = {
+    type: 'query',
     name: 'InspectContent',
-    payload: undefined,
+    filters: undefined,
   };
 
-  const result = await this.inventoryApp.execute(inspectContentCommand);
+  const result = await this.inventoryApp.execute(inspectContentQuery);
   assert.deepStrictEqual(result, ['sword', 'bow']);
 });

@@ -76,8 +76,8 @@ export function createCommandBus(): CommandBus {
       commandHandlersMap.set(commandName, commandHandler);
     },
 
-    middleware: async function commandBusRoute<D, A extends UseCase, R>(
-      context: Context<D, A, R>,
+    middleware: async function commandBusRoute<D, U extends UseCase, R>(
+      context: Context<D, U, R>,
       next: Next,
     ): Promise<void> {
       const { useCase } = context;

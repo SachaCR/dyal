@@ -80,8 +80,8 @@ export function createQueryBus(): QueryBus {
       queryHandlersMap.set(queryName, queryHandler);
     },
 
-    middleware: async function queryBusRoute<D, A extends UseCase, R>(
-      context: Context<D, A, R>,
+    middleware: async function queryBusRoute<D, U extends UseCase, R>(
+      context: Context<D, U, R>,
       next: Next,
     ): Promise<void> {
       const { useCase } = context;

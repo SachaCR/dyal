@@ -24,7 +24,7 @@ export async function removeItemMiddleware(
   const { inventory } = context.dependencies;
   const { useCase } = context;
 
-  if (useCase.type === 'command' && useCase.name !== 'RemoveItem') {
+  if (useCase.type !== 'command' || useCase.name !== 'RemoveItem') {
     await next();
     return;
   }

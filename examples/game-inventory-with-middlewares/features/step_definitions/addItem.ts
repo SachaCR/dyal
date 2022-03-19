@@ -3,7 +3,7 @@ import { Given, When, Then } from '@cucumber/cucumber';
 
 import { createGameInventoryApp } from '../../index';
 import { AddItemCommand } from '../../commands/addItem';
-import { InspectContentCommand } from '../../queries/inspectContent';
+import { InspectContentQuery } from '../../queries/inspectContent';
 
 Given('there is nothing in my inventory', function () {
   const app = createGameInventoryApp({ items: [] });
@@ -48,13 +48,13 @@ Then('it returns the item has been added', function () {
 });
 
 Then('the sword is added to the inventory', async function () {
-  const inspectContentCommand: InspectContentCommand = {
-    type: 'command',
+  const inspectContentQuery: InspectContentQuery = {
+    type: 'query',
     name: 'InspectContent',
-    payload: undefined,
+    filters: undefined,
   };
 
-  const result = await this.inventoryApp.execute(inspectContentCommand);
+  const result = await this.inventoryApp.execute(inspectContentQuery);
   assert.deepStrictEqual(result, ['sword']);
 });
 
@@ -63,12 +63,12 @@ Then('it returns that my inventory is full', function () {
 });
 
 Then('the spear is not added to the inventory', async function () {
-  const inspectContentCommand: InspectContentCommand = {
-    type: 'command',
+  const inspectContentQuery: InspectContentQuery = {
+    type: 'query',
     name: 'InspectContent',
-    payload: undefined,
+    filters: undefined,
   };
 
-  const result = await this.inventoryApp.execute(inspectContentCommand);
+  const result = await this.inventoryApp.execute(inspectContentQuery);
   assert.deepStrictEqual(result, ['sword', 'shield', 'bow']);
 });

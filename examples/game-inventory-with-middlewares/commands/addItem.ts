@@ -17,7 +17,7 @@ export async function addItemMiddleware(context: AddItemContext, next: Next) {
   const { inventory } = context.dependencies;
   const { useCase } = context;
 
-  if (useCase.type === 'command' && useCase.name !== 'AddItem') {
+  if (useCase.type !== 'command' || useCase.name !== 'AddItem') {
     await next();
     return;
   }
