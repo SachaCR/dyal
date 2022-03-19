@@ -1,7 +1,9 @@
-import { createApp } from '../../src';
+import { createApp } from 'dyal';
 import { addItemMiddleware } from './commands/addItem';
+import { removeItemMiddleware } from './commands/removeItem';
+import { inspectContentMiddleware } from './queries/inspectContent';
 
-export type GameObject = 'sword' | 'shield' | 'bow';
+export type GameObject = 'sword' | 'shield' | 'bow' | 'spear';
 
 export type GameInventory = { items: GameObject[] };
 
@@ -9,10 +11,14 @@ export type AppDependencies = {
   inventory: GameInventory;
 };
 
-const app = createApp<AppDependencies>({
-  inventory: { items: [] },
-});
+export function createGameInventoryApp(inventory: GameInventory) {
+  const gameInventoryApp = createApp<AppDependencies>({
+    inventory,
+  });
 
-app.on('command').use(addItemMiddleware);
-app.on('all').use(addItemMiddleware);
-app.use(addItemMiddleware);
+  gameInventoryApp.use(addItemMiddleware);
+  gameInventoryApp.use(removeItemMiddleware);
+  gameInventoryApp.use(inspectContentMiddleware);
+
+  return gameInventoryApp;
+}

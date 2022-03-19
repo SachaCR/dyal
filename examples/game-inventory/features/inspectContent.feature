@@ -2,7 +2,7 @@
 Feature: Inspect Inventory Content
   Inspect what your character inventory contains
 
-  Scenario: Inspect empty inventory content
+  Scenario: I inspect empty inventory content
     Given there is nothing in my inventory
     When I inspect its content
     Then it returns an empty item list
@@ -12,7 +12,7 @@ Feature: Inspect Inventory Content
     When I inspect its content
     Then it returns an item list that contains a sword, a shield and a bow
 
-  Scenario:I inspect my inventory content
+  Scenario: I inspect my inventory content
     Given there is a sword in my inventory
     When I inspect its content
     Then it returns an item list that contains a sword
