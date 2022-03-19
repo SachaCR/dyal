@@ -1,6 +1,6 @@
 {
   "name": "dyal",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "DYAL for Decouple Your Application Layer. It's a ligth & simple application layer framework with CQRS utilities",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
