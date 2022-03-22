@@ -1,15 +1,25 @@
-import { Command, Context } from 'dyal';
+import { Command, Context, UseCase } from '../../../src';
 
 import { AppDependencies, GameObject } from '..';
 
-type AddItemContext = Context<AppDependencies, AddItemCommand, AddItemResult>;
+type AddItemContext = Context<AppDependencies, AddItemUseCase, AddItemResult>;
 
-export interface AddItemCommand extends Command {
+export interface AddItemUseCase {
+  type: 'command';
   name: 'AddItem';
   payload: {
     item: GameObject;
   };
 }
+
+// You can also extend directly the command type if you prefer
+
+// export interface AddItemCommand extends Command {
+//   name: 'AddItem';
+//   payload: {
+//     item: GameObject;
+//   };
+// }
 
 export type AddItemResult = 'Inventory is full' | 'Item added';
 

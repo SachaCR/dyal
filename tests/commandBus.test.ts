@@ -44,7 +44,7 @@ describe('CommandBus', () => {
         const query: Query = {
           type: 'query',
           name: 'Query',
-          filters: {},
+          payload: {},
         };
 
         const mockNext = jest.fn(async () => {});
@@ -55,6 +55,7 @@ describe('CommandBus', () => {
           result: undefined,
         };
 
+        // @ts-expect-error
         await commandBus.middleware(context, mockNext);
 
         expect(context.result).toBeUndefined();

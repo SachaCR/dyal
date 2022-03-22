@@ -26,7 +26,7 @@ describe('app.execute()', () => {
           const result = await app.execute({
             type: 'query',
             name: 'QueryB',
-            filters: {},
+            payload: {},
           });
 
           expect(result).toStrictEqual('Query B result');
@@ -41,7 +41,7 @@ describe('app.execute()', () => {
             await app.execute({
               type: 'query',
               name: 'UnknownQuery',
-              filters: {},
+              payload: {},
             });
           } catch (err: any) {
             error = err;

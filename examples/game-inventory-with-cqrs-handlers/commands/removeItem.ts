@@ -1,4 +1,4 @@
-import { Command, Context } from 'dyal';
+import { Command, Context } from '../../../src';
 
 import { AppDependencies, GameObject } from '..';
 

@@ -12,7 +12,8 @@
     "build": "tsc",
     "check:types": "tsc --noEmit",
     "doc": "typedoc --options typedoc.json",
-    "test": "NODE_ENV=test jest",
+    "test": "jest",
+    "test:all": "npm test && npm run test:cucumber",
     "test:cucumber": "cucumber-js",
     "test:cucumber:html": "cucumber-js -p html > docs/features-report.html",
     "test:cucumber:pretty": "cucumber-js -p pretty",
@@ -39,7 +40,6 @@
   ],
   "devDependencies": {
     "@cucumber/cucumber": "^7.3.2",
-    "@cucumber/pretty-formatter": "^1.0.0-alpha.1",
     "@tsconfig/node16": "^1.0.2",
     "@types/jest": "^27.0.3",
     "@types/node": "^17.0.0",

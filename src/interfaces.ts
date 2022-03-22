@@ -13,25 +13,27 @@ export interface Context<D, U extends UseCase, R> {
 /**
  * A UseCase is either a Command or a Query
  */
-export type UseCase = Command | Query;
+export interface UseCase {
+  type: 'command' | 'query';
+  name: any;
+  payload: any;
+}
+
 /**
- * The Query interface should be used to implement your queries types.
+ * The Query interface should be used to implement your query use case types.
  * @example
  * ```typescript
  * export interface GetCountQuery extends Query {
  *   name: 'GetCountQuery';
- *   filters: {};
+ *   payload: {};
  * }
  * ```
  */
-export interface Query {
+export interface Query extends UseCase {
   type: 'query';
-  name: any;
-  filters: any;
 }
-
 /**
- * The Command interface should be used to implement your commands types.
+ * The Command interface should be used to implement your command use case types.
  * @example
  * ```typescript
  * export interface CountCommand extends Command {
@@ -40,10 +42,8 @@ export interface Query {
  * }
  * ```
  */
-export interface Command {
+export interface Command extends UseCase {
   type: 'command';
-  name: any;
-  payload: any;
 }
 
 /**
