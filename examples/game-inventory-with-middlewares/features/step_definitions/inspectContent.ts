@@ -13,7 +13,7 @@ When('I inspect its content', async function () {
   const inspectContentQuery: InspectContentQuery = {
     type: 'query',
     name: 'InspectContent',
-    filters: undefined,
+    payload: undefined,
   };
 
   const result = await this.inventoryApp.execute(inspectContentQuery);

@@ -1,4 +1,4 @@
-import { createApp } from 'dyal';
+import { createApp } from '../../src';
 import { addItemMiddleware } from './commands/addItem';
 import { removeItemMiddleware } from './commands/removeItem';
 import { inspectContentMiddleware } from './queries/inspectContent';

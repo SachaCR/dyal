@@ -1,4 +1,4 @@
-import { createApp, createCommandBus, createQueryBus } from 'dyal';
+import { createApp, createCommandBus, createQueryBus } from '../../src';
 import { addItemHandler } from './commands/addItem';
 import { removeItemHandler } from './commands/removeItem';
 import { inspectContentHandler } from './queries/inspectContent';

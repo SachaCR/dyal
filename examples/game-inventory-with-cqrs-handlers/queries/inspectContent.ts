@@ -1,4 +1,4 @@
-import { Query, Context } from 'dyal';
+import { Query, Context } from '../../../src';
 
 import { AppDependencies, GameObject } from '..';
 
@@ -10,7 +10,7 @@ type InspectContentContext = Context<
 
 export interface InspectContentQuery extends Query {
   name: 'InspectContent';
-  filters: undefined;
+  payload: undefined;
 }
 
 export type InspectContentResult = GameObject[];

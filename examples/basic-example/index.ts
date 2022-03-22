@@ -71,7 +71,7 @@ async function run() {
   const getCountQuery: GetCountQuery = {
     type: 'query',
     name: 'GetCountQuery',
-    filters: {},
+    payload: {},
   };
 
   const resultCount = await app.execute<CountCommandResult>(countCommand);

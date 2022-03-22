@@ -9,7 +9,7 @@ export type CountQueryContext = Context<
 
 export interface GetCountQuery extends Query {
   name: 'GetCountQuery';
-  filters: {};
+  payload: {};
 }
 
 export interface GetCountQueryResult {

@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for composeMiddlewares.ts</title>
+    <title>Code coverage report for useCaseBus.ts</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="prettify.css" />
     <link rel="stylesheet" href="base.css" />
@@ -19,34 +19,34 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="index.html">All files</a> composeMiddlewares.ts</h1>
+        <h1><a href="index.html">All files</a> useCaseBus.ts</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>17/17</span>
+                <span class='fraction'>16/16</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>4/4</span>
+                <span class='fraction'>2/2</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>3/3</span>
+                <span class='fraction'>5/5</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>17/17</span>
+                <span class='fraction'>16/16</span>
             </div>
         
             
@@ -103,84 +103,150 @@
 <a name='L38'></a><a href='#L38'>38</a>
 <a name='L39'></a><a href='#L39'>39</a>
 <a name='L40'></a><a href='#L40'>40</a>
-<a name='L41'></a><a href='#L41'>41</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L41'></a><a href='#L41'>41</a>
+<a name='L42'></a><a href='#L42'>42</a>
+<a name='L43'></a><a href='#L43'>43</a>
+<a name='L44'></a><a href='#L44'>44</a>
+<a name='L45'></a><a href='#L45'>45</a>
+<a name='L46'></a><a href='#L46'>46</a>
+<a name='L47'></a><a href='#L47'>47</a>
+<a name='L48'></a><a href='#L48'>48</a>
+<a name='L49'></a><a href='#L49'>49</a>
+<a name='L50'></a><a href='#L50'>50</a>
+<a name='L51'></a><a href='#L51'>51</a>
+<a name='L52'></a><a href='#L52'>52</a>
+<a name='L53'></a><a href='#L53'>53</a>
+<a name='L54'></a><a href='#L54'>54</a>
+<a name='L55'></a><a href='#L55'>55</a>
+<a name='L56'></a><a href='#L56'>56</a>
+<a name='L57'></a><a href='#L57'>57</a>
+<a name='L58'></a><a href='#L58'>58</a>
+<a name='L59'></a><a href='#L59'>59</a>
+<a name='L60'></a><a href='#L60'>60</a>
+<a name='L61'></a><a href='#L61'>61</a>
+<a name='L62'></a><a href='#L62'>62</a>
+<a name='L63'></a><a href='#L63'>63</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">8x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">10x</span>
-<span class="cline-any cline-yes">13x</span>
-<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">9x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">8x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">14x</span>
-<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">13x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">13x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">13x</span>
+<span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">12x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">8x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { UseCase } from '.';
-import { Middleware, Context } from './interfaces';
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { Command, Context, UseCase, Next, Query } from './interfaces';
 &nbsp;
-export function composeMiddlewares(middlewares: Middleware[]) {
-  if (!Array.isArray(middlewares)) {
-    throw new TypeError('Middleware stack must be an array!');
-  }
+export interface UseCaseBus&lt;U extends UseCase&gt; {
+  register&lt;D, R&gt;(
+    useCaseName: string,
+    handler: (context: Context&lt;D, U, R&gt;) =&gt; Promise&lt;R&gt;,
+  ): void;
 &nbsp;
-  for (const fn of middlewares) {
-    if (typeof fn !== 'function') {
-      throw new TypeError('Middleware must be composed of functions!');
-    }
-  }
+  middleware&lt;D, R&gt;(context: Context&lt;D, U, R&gt;, next: Next): Promise&lt;void&gt;;
+}
 &nbsp;
-  return async function runStack&lt;D, A extends UseCase, R&gt;(
-    context: Context&lt;D, A, R&gt;,
-  ): Promise&lt;unknown&gt; {
-    let index = -1;
+export type CommandBus = UseCaseBus&lt;Command&gt;;
+export type QueryBus = UseCaseBus&lt;Query&gt;;
 &nbsp;
-    async function next(i: number): Promise&lt;unknown&gt; {
-      if (i &lt;= index) {
-        throw new Error('next() called multiple times');
+export function createCommandBus(): CommandBus {
+  return createUseCaseBus&lt;Command&gt;('command');
+}
+&nbsp;
+export function createQueryBus(): QueryBus {
+  return createUseCaseBus&lt;Query&gt;('query');
+}
+&nbsp;
+function createUseCaseBus&lt;U extends UseCase&gt;(
+  useCaseType: 'command' | 'query',
+): UseCaseBus&lt;U&gt; {
+  const handlersMap = new Map&lt;
+    string,
+    (context: Context&lt;any, U, any&gt;) =&gt; Promise&lt;any&gt;
+  &gt;();
+&nbsp;
+  return {
+    register: function useCaseBusRegister&lt;D, R&gt;(
+      useCaseName: string,
+      handler: (context: Context&lt;D, U, R&gt;) =&gt; Promise&lt;R&gt;,
+    ): void {
+      handlersMap.set(useCaseName, handler);
+    },
+&nbsp;
+    middleware: async function useCaseBusRoute&lt;D, R&gt;(
+      context: Context&lt;D, U, R&gt;,
+      next: Next,
+    ): Promise&lt;void&gt; {
+      const { useCase } = context;
+      if (useCase.type !== useCaseType) {
+        await next();
+        return;
       }
 &nbsp;
-      index = i;
+      let handler = handlersMap.get(useCase.name);
 &nbsp;
-      let currentMiddleware = middlewares[i];
-&nbsp;
-      if (i === middlewares.length) {
-        return Promise.resolve();
+      if (!handler) {
+        throw new RangeError(
+          `There is no ${useCaseType} handler registered for this ${useCaseType} name`,
+        );
       }
 &nbsp;
-      const nextMiddlewareNext = next.bind(null, i + 1);
+      context.result = await handler(context);
 &nbsp;
-      return await currentMiddleware(context, nextMiddlewareNext);
-    }
-&nbsp;
-    return await next(0);
+      return;
+    },
   };
 }
 &nbsp;</pre></td></tr></table></pre>

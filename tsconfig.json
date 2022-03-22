@@ -8,6 +8,7 @@
     "examples",
     "coverage",
     "docs",
+    "tests",
     "features",
     "cucumber.js",
     "tests"

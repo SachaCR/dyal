@@ -21,7 +21,7 @@ describe('QueryBus', () => {
         const queryB: Query = {
           type: 'query',
           name: 'QueryB',
-          filters: {},
+          payload: {},
         };
 
         const mockNext = jest.fn(async () => {});
@@ -55,6 +55,7 @@ describe('QueryBus', () => {
           result: undefined,
         };
 
+        // @ts-expect-error
         await queryBus.middleware(context, mockNext);
 
         expect(context.result).toBeUndefined();
@@ -67,7 +68,7 @@ describe('QueryBus', () => {
         const queryD: Query = {
           type: 'query',
           name: 'QueryD',
-          filters: {},
+          payload: {},
         };
 
         const mockNext = jest.fn(async () => {});
