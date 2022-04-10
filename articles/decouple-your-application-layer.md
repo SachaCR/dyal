@@ -18,20 +18,36 @@ As Uncle Bob says "_Web is a detail_".
 
 ## Start with the why
 
-At Spendesk, we build microservices with four layers following Domain-Driven Design principles (If you don't know it, you should read this great [book](https://www.amazon.fr/Domain-Driven-Design-Tackling-Complexity-Software/dp/0321125215/ref=asc_df_0321125215/?tag=googshopfr-21&linkCode=df0&hvadid=54193931092&hvpos=&hvnetw=g&hvrand=12069762422946850339&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9056598&hvtargid=pla-125562405915&psc=1) by Eric Evans):
+At Spendesk, we build microservices with four layers following [Domain-Driven Design](https://en.wikipedia.org/wiki/Domain-driven_design) principles (If you are interested in DDD, you should read this great [book](https://www.amazon.fr/Domain-Driven-Design-Tackling-Complexity-Software/dp/0321125215/ref=asc_df_0321125215/?tag=googshopfr-21&linkCode=df0&hvadid=54193931092&hvpos=&hvnetw=g&hvrand=12069762422946850339&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9056598&hvtargid=pla-125562405915&psc=1) by Eric Evans):
 
 - The `domain layer` contains your domain logic.
 - The `application layer` contains your business use cases.
 - The `infrastructure layer` provides data sources and repositories to persist your data.
 - The `presentation layer` exposes your application features to your end-user.
 
+![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/vvffqnq98pjk1ke1ldc3.png)
+
 During our design phase where we tried to follow these layers structure we built a piece of software called the dispatcher that takes a command object and execute it. This dispatcher find the correct handler for the command and will return the result. This way the HTTP layer(presentation) is just transforming a HTTP payload into a command object and ask the dispatcher (application layer) to execute it.
+
+![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/wx5gpvyg4xeym28c3u55.png)
 
 We were really happy with this as it keeps our presentation layer really dumb with no business logic at all. Allowing us to have 2 differents presentation layers for our application because we need to expose it in two different ways to our users.
 
 But, we had an issue. For legal reason we need to save every command our system receives. The problem with the dispatcher we implemented was that it only allows to register command handlers. A solution would have been for us to add code to save our commands in every handler. I was not really convinced it was a good idea, it creates code duplication and you can easily forgot to add this piece of code.
 So we started to create a wrapper around our command handlers that saves the command before calling the handler.
 Honestly it was quite messy as we had to wrap all our handlers. I decided to improve the dispatcher by providing some pre and post hooks execution methods. It works fine, we can apply logic to all our commands handlers with these hooks.
+
+```typescript
+const dispatcher = createDispatcher();
+
+dispatcher.preExecute(saveCommand);
+dispatcher.postExecute(saveCommandResult);
+
+dispatcher.register('Command1', command1Handler);
+dispatcher.register('Command2', command2Handler);
+
+// etc...
+```
 
 But I was still thinking that I would really appreciate something more flexible, something as flexible as a middleware system like Express or Koa.
 
@@ -92,8 +108,6 @@ import { UseCase, Context, Next } from 'dyal';
 
 import { AppDependencies, GameObject } from '..';
 
-type AddItemContext = Context<AppDependencies, AddItemCommand, AddItemResult>;
-
 export interface AddItemCommand extends UseCase {
   type: 'command';
   name: 'AddItem';
@@ -103,6 +117,8 @@ export interface AddItemCommand extends UseCase {
 }
 
 export type AddItemResult = 'Inventory is full' | 'Item added';
+
+type AddItemContext = Context<AppDependencies, AddItemCommand, AddItemResult>;
 
 export async function addItemMiddleware(context: AddItemContext, next: Next) {
   const { inventory } = context.dependencies;
@@ -249,7 +265,7 @@ I think [DYAL](https://www.npmjs.com/package/dyal) could be useful if you have a
 
 But if you need to implement complex business use cases and want to avoid being too dependent on a presentation framework. Or just you prefer to wait before choosing one. DYAL could be a great tool for you.
 
-Don't hesitate to tell me in the comment if you've tried it or using it for your application. The package is in version 1.0.6 while I'm writing those lines. Let me know if you find bugs or have feedback I'll be happy to make some evolutions.
+Don't hesitate to tell me in the comment if you've tried it or using it for your application. The package is in version 1.0.7 while I'm writing those lines. Let me know if you find bugs or have feedback I'll be happy to make some evolutions.
 
 Thanks for having read that far.
 
