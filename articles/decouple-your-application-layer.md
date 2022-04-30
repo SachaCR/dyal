@@ -262,7 +262,7 @@ I think [DYAL](https://www.npmjs.com/package/dyal) could be useful if you have a
 
 But if you need to implement complex business use cases and want to avoid being too dependent on a presentation framework. Or you just prefer to wait before choosing one. DYAL could be a great tool for you.
 
-Don't hesitate to tell me in the comments if you've tried it or are using it for your application. The package is in version 1.0.7 while I'm writing those lines. Let me know if you find bugs or have feedback I'll be happy to make some evolutions.
+Don't hesitate to tell me in the comments if you've tried it or are using it for your application. The package is in version 1.0.9 while I'm writing those lines. Let me know if you find bugs or have feedback I'll be happy to make some evolutions.
 
 Thanks for having read that far.
 
