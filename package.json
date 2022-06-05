@@ -1,6 +1,6 @@
 {
   "name": "dyal",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "DYAL for Decouple Your Application Layer. It's a ligth & simple application layer framework with CQRS utilities",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -16,10 +16,7 @@
     "test:all": "npm test && npm run test:cucumber",
     "test:cucumber": "cucumber-js",
     "test:cucumber:html": "cucumber-js -p html > docs/features-report.html",
-    "test:cucumber:pretty": "cucumber-js -p pretty",
-    "preversion": "npm run doc && npm test && npm run test:cucumber:html",
-    "version": "npm run build",
-    "postversion": "git push && git push --tags"
+    "test:cucumber:pretty": "cucumber-js -p pretty"
   },
   "repository": {
     "type": "git",
@@ -44,6 +41,7 @@
     "@types/jest": "^27.0.3",
     "@types/node": "^17.0.0",
     "jest": "^27.4.5",
+    "jest-html-reporters": "^3.0.8",
     "ts-jest": "^27.1.2",
     "ts-node": "^10.7.0",
     "typedoc": "^0.22.12",
@@ -69,7 +67,19 @@
     ],
     "transform": {
       "^.+\\.ts$": "ts-jest"
-    }
+    },
+    "reporters": [
+      "default",
+      [
+        "jest-html-reporters",
+        {
+          "publicPath": "./docs/test-report",
+          "filename": "index.html",
+          "openReport": true,
+          "pageTitle": "Dyal tests report"
+        }
+      ]
+    ]
   },
   "volta": {
     "node": "18.0.0",

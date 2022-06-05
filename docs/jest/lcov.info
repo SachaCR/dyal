@@ -1,5 +1,5 @@
 TN:
-SF:src/composeMiddlewares.ts
+SF:src\composeMiddlewares.ts
 FN:4,composeMiddlewares
 FN:15,runStack
 FN:20,next
@@ -35,7 +35,7 @@ BRF:4
 BRH:4
 end_of_record
 TN:
-SF:src/createApp.ts
+SF:src\createApp.ts
 FN:103,createApp
 FN:106,use
 FN:115,(anonymous_2)
@@ -83,7 +83,7 @@ BRF:5
 BRH:5
 end_of_record
 TN:
-SF:src/index.ts
+SF:src\index.ts
 FNF:0
 FNH:0
 DA:1,7
@@ -95,7 +95,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:src/useCaseBus.ts
+SF:src\useCaseBus.ts
 FN:15,createCommandBus
 FN:19,createQueryBus
 FN:23,createUseCaseBus

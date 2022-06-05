@@ -16,6 +16,7 @@ It let you free to choose any way to expose your app commands with HTTP, CLI, gR
 # Documentation:
 
 - [Type Documentation](https://sachacr.github.io/dyal/)
+- [Tests Report](https://sachacr.github.io/dyal/test-report/index.html)
 - [Code Coverage Report](https://sachacr.github.io/dyal/jest/lcov-report/index.html)
 - [Cucumber Tests Report](https://sachacr.github.io/dyal/features-report.html)
 
@@ -197,3 +198,10 @@ const app = createApp(dependencies);
 
 app.use(myLoggerMiddleware);
 ```
+
+# Publish a new version:
+
+- Bump package.json version
+- `npm run build`
+- Commit
+- Release on github

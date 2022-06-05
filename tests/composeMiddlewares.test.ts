@@ -3,7 +3,7 @@ import { composeMiddlewares } from '../src/composeMiddlewares';
 describe('composeMiddlewares()', () => {
   describe('Given an empty array of middlwares', () => {
     describe('When I compose them', () => {
-      it('Then it does not throw', () => {
+      it('Then it does not throws', () => {
         composeMiddlewares([]);
       });
     });
@@ -11,7 +11,7 @@ describe('composeMiddlewares()', () => {
 
   describe('Given an empty array of invalid middlewares', () => {
     describe('When I compose them', () => {
-      it('Then it throw', () => {
+      it('Then it throws', () => {
         let error;
 
         try {
@@ -30,7 +30,7 @@ describe('composeMiddlewares()', () => {
 
   describe('Given an invalid middlewares', () => {
     describe('When I compose them', () => {
-      it('Then it throw', () => {
+      it('Then it throws', () => {
         let error;
 
         try {
