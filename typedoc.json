@@ -8,6 +8,5 @@
   "tsconfig": "tsconfig.json",
   "excludePrivate": true,
   "excludeProtected": true,
-  "excludeExternals": true,
-  "listInvalidSymbolLinks": false
+  "excludeExternals": true
 }
