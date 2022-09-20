@@ -36,7 +36,7 @@
     "framework"
   ],
   "devDependencies": {
-    "@cucumber/cucumber": "8.5.3",
+    "@cucumber/cucumber": "8.6.0",
     "@tsconfig/node16": "1.0.3",
     "@types/jest": "29.0.2",
     "@types/node": "17.0.0",
